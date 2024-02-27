@@ -1,0 +1,25 @@
+easyblock = 'EB_Anaconda'
+
+name = 'Miniconda3'
+version = '23.11.0-2'
+
+homepage = 'https://docs.conda.io/en/latest/miniconda.html'
+description = """Miniconda is a free minimal installer for conda. It is a small,
+ bootstrap version of Anaconda that includes only conda, Python, the packages they
+ depend on, and a small number of other useful packages."""
+
+toolchain = SYSTEM
+
+source_urls = ['https://repo.anaconda.com/miniconda/']
+local_arch = {'arm64': 'aarch64'}.get(ARCH, ARCH)
+sources = ['%%(name)s-py311_%%(version)s-Linux-%s.sh' % local_arch]
+checksums = [
+    {
+        '%(name)s-py311_%(version)s-Linux-x86_64.sh':
+            'c9ae82568e9665b1105117b4b1e499607d2a920f0aea6f94410e417a0eff1b9c',
+        '%(name)s-py311_%(version)s-Linux-aarch64.sh':
+            'decd447fb99dbd0fc5004481ec9bf8c04f9ba28b35a9292afe49ecefe400237f',
+    }
+]
+
+moduleclass = 'lang'
